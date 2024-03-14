@@ -22,3 +22,6 @@ const nome = 'Qualquer coisa';
     falaNome();
     console.log(idade, peso, altura);
 })(30, 80, 1.80); //argumentos
+
+
+//fim
