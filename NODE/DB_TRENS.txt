@@ -1,6 +1,0 @@
-passoscgabriel
-WtbKCs9QPNO06Jbo
-
-npm install mongodb
-
-mongodb+srv://passoscgabriel:WtbKCs9QPNO06Jbo@cursojs1.v1fsjj7.mongodb.net/?retryWrites=true&w=majority&appName=cursojs1
