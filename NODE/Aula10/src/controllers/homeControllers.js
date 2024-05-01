@@ -1,12 +1,6 @@
 exports.paginaInicial = (req, res) =>{
-    res.send(`
-    <form action="/" method="POST">
-    Nome do Cliente: <input type="text" name ="qualquercoisa"><br>
-    Outro Campo: <input type="text" name ="aquioutrocampo">
-    <button>Olá mundo</button>
-    <form>
-   `);
-}
+    res.render('index');
+};
 
 exports.trataPost = (req, res) =>{
     res.send('Ei, sou sua nova rota de POST.');

@@ -1,25 +1,34 @@
 const express = require('express');
 const app = express();
 
-//          Criar, ler,  atualizar, deletar dados
-// CRUD -> Create, Read, Update, Delete
-//           POST, GET,  PUT, DELETE
-
-//http://localhost:3000/ -> GET Entregue a página
-//http://localhost:3000/sobre -> GET Entregue a página sobre
-//http://localhost:3000/contato -> GET Entregue a página contato
+app.use(
+    express.urlencoded(
+        {
+            extended: true
+        }
+    )
+); //vai pegar os dados do formulário
 
 app.get('/', (req, res) => { //req = request, res = response
     res.send(`
     <form action="/" method="POST">
-    Nome do Cliente: <input type="text" name ="nome">
+    Nome do Cliente: <input type="text" name ="qualquercoisa">
+    Outro Campo: <input type="text" name ="aquioutrocampo">
     <button>Olá mundo</button>
     <form>
    `);
 });
 
+app.get('/testes/:idUsuarios?/:parametro?', (req, res) => { //a interrogação significa que o parâmetro pode ser ou não informado
+    console.log(req.params);
+    console.log(req.query);
+    //res.send(req.params); isso vai retornar um objeto com os parâmetros
+    res.send(req.query.facebookprofile); //vai retornar um objeto com os parâmetros
+})
+
 app.post('/', (req, res) => {
-    res.send('Recebi o formulário');
+    console.log(req.body);
+    res.send('O que você me enviou foi: ' + req.body.qualquercoisa); //O "nome" é do atributo name do input, no HTML
 })
 
 app.get('/contato', (req, res) => {

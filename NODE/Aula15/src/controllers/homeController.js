@@ -1,17 +1,9 @@
-//const HomeModel = require('../models/HomeModel');
-
-// HomeModel.create({ //criando o registro
-//     titulo: 'Outro Titulo',
-//     descricao: 'Outra descrição'
-// })
-//   .then(dados => console.log(dados))
-//   .catch(e => console.log(e));
-
-// HomeModel.find() //buscando todos os registros
-//     .then(dados => console.log(dados))
-//     .catch(e => console.log(e));
-
 exports.paginaInicial = (req, res) => {
+  //req.session.usuario={nome: 'luiz', logato: true}
+  // req.flash('info', 'Usuário logado com sucesso!');
+  // req.flash('error', 'trem!');
+  // req.flash('sucess', 'Ugaa Bugaaaa!');
+  //console.log(req.flash('error'), req.flash('sucess'), req.flash('info')); //imprime as mensagens
   res.render('index');
   return;
 };

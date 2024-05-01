@@ -6,13 +6,28 @@ const mongoose = require('mongoose');
 
 mongoose.connect(process.env.CONNECTIONSTRING)
     .then(() => {
-      console.log('Conectado ao MongoDB');
       app.emit('pronto');
     })
-    .catch((err) => {
-        console.log(err);
-    });
+    .catch((e) => console.log(e));
 
+const session = require('express-session'); //importando o express-session, para criar uma sessão
+const MongoStore = require('connect-mongo');
+const flash = require('connect-flash');
+
+//configurando o express-session
+const sessionOptions = session({
+    secret: 'pepitothecat666',
+    store: MongoStore.create({ mongoUrl: process.env.CONNECTIONSTRING}),
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+        maxAge: 1000 * 60 * 60 * 24 * 7, // 7 dias
+        httpOnly: true
+    }
+})
+
+app.use(sessionOptions);
+app.use(flash());// flash faz a mensagem aparecer na tela
 
 const routes = require('./routes');
 const path = require('path');

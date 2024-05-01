@@ -1,6 +1,9 @@
 //Dobrar os numeros
 //const numeros = [5,50,80,1,2,3,4,8,7,11,15,22,27];
-// const numerosEmDrobro = numeros.map(function(valor, indice, array){ //O MAP é um for com proposito, ele cria um novo array com o mesmo tamanho do array original, só que com os valores transformados
+// const numerosEmDrobro = numeros.map(function(valor, indice, array){ //O MAP é um for com proposito,
+//                                                                  ele cria um novo array com o
+//                                                                  mesmo tamanho do array original,
+//                                                                  só que com os valores transformados
 //     return valor * 2;
 // });
 // const numerosEmDrobro = numeros.map(valor => valor * 2); //Arrow function

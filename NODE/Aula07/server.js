@@ -12,8 +12,8 @@ const app = express();
 app.get('/', (req, res) => { //req = request, res = response
     res.send(`
     <form action="/" method="POST">
-    Nome: <input type="text" name ="nome">
-    <button> Enviar </button>
+    Nome do Cliente: <input type="text" name ="nome">
+    <button>Olá mundo</button>
     <form>
    `);
 });

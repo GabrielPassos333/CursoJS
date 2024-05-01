@@ -5,6 +5,8 @@ const path = require('path');
 
 app.use(express.urlencoded({extended: true})); //vai pegar os dados do formulário
 
+app.use(express.static(path.resolve(__dirname, 'public')));
+
 app.set('views', './src/views');
 app.set('view engine', 'ejs');
 

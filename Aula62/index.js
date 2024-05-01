@@ -24,4 +24,4 @@ console.log(nomes6);
 
 const nome7 = ['Luiz', 'Otávio', 'Miranda'];
 const nome7String = nome7.join(' ');//Junta os elementos do array em uma string
-console.log(nome7String);
+console.log(nome7String); //
