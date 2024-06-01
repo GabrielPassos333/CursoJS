@@ -1,5 +1,5 @@
 /.vscode/
 /.idea/
 /fetch-axios.zip
-/Aula92/node_modules/
-/Aula93/node_modules/
+/node_modules/
+.env

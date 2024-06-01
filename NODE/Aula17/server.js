@@ -3,7 +3,6 @@ require('dotenv').config();//carrega as variáveis de ambiente
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
-
 mongoose.connect(process.env.CONNECTIONSTRING)
     .then(() => {
       app.emit('pronto');
@@ -31,18 +30,26 @@ app.use(flash());// flash faz a mensagem aparecer na tela
 
 const routes = require('./routes');
 const path = require('path');
-const {middlewareGlobal} = require('./src/middlewares/middleware'); //sendo importado o middleware
+
+const helmet = require('helmet');
+const csrf = require('csurf'); //token de segurança
+
+const {middlewareGlobal, checkCsrfError, csrfMiddleware} = require('./src/middlewares/middleware'); //sendo importado o middleware
+
+app.use(helmet());
+
 //entre chaves pois é um objeto
-
 app.use(express.urlencoded({ extended: true }));
-
+app.use(express.json());
 app.use(express.static(path.resolve(__dirname, 'public')));
-
 app.set('views', path.resolve(__dirname, 'src', 'views'));
 app.set('view engine', 'ejs');
 
+app.use(csrf());
 // Nossos próprios middlewares
 app.use(middlewareGlobal);
+app.use(checkCsrfError);
+app.use(csrfMiddleware);
 app.use(routes);
 
 app.on('pronto', () => {
@@ -51,4 +58,3 @@ app.on('pronto', () => {
     console.log('Servidor executando na porta 3000');
   });
 });
-

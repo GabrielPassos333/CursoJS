@@ -1,13 +1,14 @@
-const mongoose = require('mongoose'); //importando o mongoose
+const mongoose = require('mongoose');
 
-const HomeSchema = new mongoose.Schema({ //criando o esquema
-    titulo: {
-        type: String,
-        required: true
-    },
-    descricao: String
+const HomeSchema = new mongoose.Schema({
+  titulo: { type: String, required: true },
+  descricao: String
 });
 
-const HomeModel = mongoose.model('Home', HomeSchema); //criando o model
+const HomeModel = mongoose.model('Home', HomeSchema);
 
-//module.exports = HomeModel;
+class Home {
+
+}
+
+module.exports = Home;

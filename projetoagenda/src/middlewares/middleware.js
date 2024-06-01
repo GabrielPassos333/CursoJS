@@ -1,19 +1,22 @@
 exports.middlewareGlobal = (req, res, next) => {
-    res.locals.umaVariavelLocal = 'Isso vai para todas as views';
-    next();
+  res.locals.errors = req.flash('errors'); //para capturar os erros
+  res.locals.success = req.flash('success'); //para capturar os sucessos
+  next();
 };
+
 exports.outroMiddleware = (req, res, next) => {
-    next();
+  next();
 };
 
 exports.checkCsrfError = (err, req, res, next) => {
-    if(err && 'EBADCSRFTOKEN' === err.code) {
-        return res.send('404'); //se der erro, vai para a página 404
-    }
-    next();
+  if(err) {
+    return res.render('404');
+  }
+
+  next();
 };
 
-exports.csrfMiddleware = (req, res, next)=>{
-    res.locals.csrfToken = req.csrfToken();
-    next();
+exports.csrfMiddleware = (req, res, next) => {
+  res.locals.csrfToken = req.csrfToken();
+  next();
 };
